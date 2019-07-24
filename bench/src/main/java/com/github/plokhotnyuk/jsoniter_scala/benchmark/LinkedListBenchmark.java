@@ -29,7 +29,7 @@ public class LinkedListBenchmark {
     int size;
 
     @Benchmark
-    public LinkedList<Boolean> javaListOfBooleans() {
+    public LinkedList<Boolean> javaList() {
         LinkedList<Boolean> list = new LinkedList<>();
         int l = size;
         int i = 0;
@@ -41,12 +41,24 @@ public class LinkedListBenchmark {
     }
 
     @Benchmark
-    public List<Boolean> scalaListOfBooleans() {
+    public List<Boolean> scalaListPlusEq() {
         ListBuffer<Boolean> listBuffer = new ListBuffer<>();
         int l = size;
         int i = 0;
         while (i < l) {
             listBuffer.$plus$eq((i & 1) == 0);
+            i++;
+        }
+        return listBuffer.toList();
+    }
+
+    @Benchmark
+    public List<Boolean> scalaListAddOne() {
+        ListBuffer<Boolean> listBuffer = new ListBuffer<>();
+        int l = size;
+        int i = 0;
+        while (i < l) {
+            listBuffer.addOne((i & 1) == 0);
             i++;
         }
         return listBuffer.toList();

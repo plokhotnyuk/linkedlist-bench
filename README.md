@@ -2,111 +2,65 @@
 
 Benchmarks for creation of linked lists in Java and Scala
 
-## OpenJDK 11.0.1 + Scala 2.13.0
+## OpenJDK 11.0.1
 ```
-sbt -java-home /usr/lib/jvm/openjdk-11 -no-colors ++2.13.0! clean 'bench/jmh:run LinkedListBenchmark'
+sbt -java-home /usr/lib/jvm/openjdk-11 -no-colors clean 'bench/jmh:run LinkedListBenchmark'
 ...
 [info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
 [info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
 [info] experiments, perform baseline and negative tests that provide experimental control, make sure
 [info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
 [info] Do not assume the numbers tell you what you want them to tell.
-[info] Benchmark                                (size)   Mode  Cnt          Score        Error  Units
-[info] LinkedListBenchmark.javaListOfBooleans        1  thrpt    5  115964833.994 ± 639176.541  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans       10  thrpt    5   21369838.875 ±  37165.116  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans      100  thrpt    5    2356905.688 ±   3751.665  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans       1  thrpt    5  141307886.627 ± 528269.675  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans      10  thrpt    5   17389859.809 ±  56264.840  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans     100  thrpt    5    1739506.407 ±   6290.083  ops/s
+[info] Benchmark                            (size)   Mode  Cnt          Score         Error  Units
+[info] LinkedListBenchmark.javaList              1  thrpt    5  116207382.581 ±  197850.132  ops/s
+[info] LinkedListBenchmark.javaList             10  thrpt    5   21295005.020 ±  192641.262  ops/s
+[info] LinkedListBenchmark.javaList            100  thrpt    5    2355628.317 ±    6767.822  ops/s
+[info] LinkedListBenchmark.scalaListAddOne       1  thrpt    5  217049301.066 ± 1650171.022  ops/s
+[info] LinkedListBenchmark.scalaListAddOne      10  thrpt    5   32620951.821 ±  246666.870  ops/s
+[info] LinkedListBenchmark.scalaListAddOne     100  thrpt    5    3429731.014 ±   16137.659  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq       1  thrpt    5  141254979.461 ±  345515.997  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq      10  thrpt    5   17388370.217 ±   23588.614  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq     100  thrpt    5    1737871.713 ±   18028.245  ops/s
 ```
 
-## OpenJDK 11.0.1 + Scala 2.12.8
+## GraalVM CE 19.1.0
 ```
-sbt -java-home /usr/lib/jvm/openjdk-11 -no-colors ++2.12.8! clean 'bench/jmh:run LinkedListBenchmark'
+sbt -java-home /usr/lib/jvm/graalvm-ce-19 -no-colors clean 'bench/jmh:run LinkedListBenchmark'
 ...
 [info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
 [info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
 [info] experiments, perform baseline and negative tests that provide experimental control, make sure
 [info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
 [info] Do not assume the numbers tell you what you want them to tell.
-[info] Benchmark                                (size)   Mode  Cnt          Score         Error  Units
-[info] LinkedListBenchmark.javaListOfBooleans        1  thrpt    5  116268500.122 ±  229868.288  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans       10  thrpt    5   21320881.892 ±   86340.034  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans      100  thrpt    5    2356684.128 ±    5464.050  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans       1  thrpt    5  217337686.185 ± 1106176.949  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans      10  thrpt    5   23973040.911 ±   96581.869  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans     100  thrpt    5    1955847.520 ±    7049.663  ops/s
+[info] Benchmark                            (size)   Mode  Cnt          Score        Error  Units
+[info] LinkedListBenchmark.javaList              1  thrpt    5  136128776.288 ± 401935.046  ops/s
+[info] LinkedListBenchmark.javaList             10  thrpt    5   27972807.011 ± 156080.759  ops/s
+[info] LinkedListBenchmark.javaList            100  thrpt    5    3134062.142 ±   3123.994  ops/s
+[info] LinkedListBenchmark.scalaListAddOne       1  thrpt    5   38021472.997 ± 239313.419  ops/s
+[info] LinkedListBenchmark.scalaListAddOne      10  thrpt    5    6180593.997 ±  23436.434  ops/s
+[info] LinkedListBenchmark.scalaListAddOne     100  thrpt    5     701707.535 ±   2277.735  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq       1  thrpt    5   37923287.712 ± 115229.993  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq      10  thrpt    5    6026320.459 ±  30268.899  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq     100  thrpt    5     680228.559 ±   1209.837  ops/s
 ```
 
-## OpenJDK 11.0.1 + Scala 2.11.12
+## GraalVM EE 19.1.0
 ```
-sbt -java-home /usr/lib/jvm/openjdk-11 -no-colors ++2.11.12! clean 'bench/jmh:run LinkedListBenchmark'
+sbt -java-home /usr/lib/jvm/graalvm-ee-19 -no-colors clean 'bench/jmh:run LinkedListBenchmark'
 ...
 [info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
 [info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
 [info] experiments, perform baseline and negative tests that provide experimental control, make sure
 [info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
 [info] Do not assume the numbers tell you what you want them to tell.
-[info] Benchmark                                (size)   Mode  Cnt          Score        Error  Units
-[info] LinkedListBenchmark.javaListOfBooleans        1  thrpt    5  116301240.826 ± 261179.954  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans       10  thrpt    5   21358627.038 ±  34014.497  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans      100  thrpt    5    2356476.562 ±   7604.223  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans       1  thrpt    5  184808032.564 ± 333719.844  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans      10  thrpt    5   17463601.690 ± 165511.007  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans     100  thrpt    5    2510096.965 ±  10260.141  ops/s
+[info] Benchmark                            (size)   Mode  Cnt          Score        Error  Units
+[info] LinkedListBenchmark.javaList              1  thrpt    5  157896297.222 ± 827162.501  ops/s
+[info] LinkedListBenchmark.javaList             10  thrpt    5   30265347.922 ± 155535.146  ops/s
+[info] LinkedListBenchmark.javaList            100  thrpt    5    3446605.182 ±  12733.358  ops/s
+[info] LinkedListBenchmark.scalaListAddOne       1  thrpt    5   37297458.023 ± 935716.406  ops/s
+[info] LinkedListBenchmark.scalaListAddOne      10  thrpt    5    6044791.828 ±   8597.697  ops/s
+[info] LinkedListBenchmark.scalaListAddOne     100  thrpt    5     737495.480 ±   1199.901  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq       1  thrpt    5   37291784.212 ± 848327.468  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq      10  thrpt    5    5684613.811 ±   7260.125  ops/s
+[info] LinkedListBenchmark.scalaListPlusEq     100  thrpt    5     738569.769 ±    906.034  ops/s
 ```
-
-## GraalVM CE 19.1.0 + Scala 2.13.0
-```
-sbt -java-home /usr/lib/jvm/graalvm-ce-19 -no-colors ++2.13.0! clean 'bench/jmh:run LinkedListBenchmark'
-...
-[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
-[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
-[info] experiments, perform baseline and negative tests that provide experimental control, make sure
-[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
-[info] Do not assume the numbers tell you what you want them to tell.
-[info] Benchmark                                (size)   Mode  Cnt          Score         Error  Units
-[info] LinkedListBenchmark.javaListOfBooleans        1  thrpt    5  136740329.223 ±  328022.258  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans       10  thrpt    5   28039602.026 ±   91503.686  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans      100  thrpt    5    3141197.916 ±   10653.924  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans       1  thrpt    5   37580954.666 ± 3821572.767  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans      10  thrpt    5    6151102.268 ±   10186.068  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans     100  thrpt    5     686512.459 ±    3835.357  ops/s
-```
-
-## GraalVM CE 19.1.0 + Scala 2.12.8
-```
-sbt -java-home /usr/lib/jvm/graalvm-ce-19 -no-colors ++2.12.8! clean 'bench/jmh:run LinkedListBenchmark'
-...
-[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
-[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
-[info] experiments, perform baseline and negative tests that provide experimental control, make sure
-[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
-[info] Do not assume the numbers tell you what you want them to tell.
-[info] Benchmark                                (size)   Mode  Cnt          Score        Error  Units
-[info] LinkedListBenchmark.javaListOfBooleans        1  thrpt    5  137054509.968 ± 186986.294  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans       10  thrpt    5   28093012.787 ±  39659.809  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans      100  thrpt    5    3149120.773 ±  10792.567  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans       1  thrpt    5  238798855.781 ± 422758.748  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans      10  thrpt    5   30969607.972 ± 159296.508  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans     100  thrpt    5    2960262.075 ±   8304.218  ops/s
-```
-
-## GraalVM CE 19.1.0 + Scala 2.11.12
-```
-sbt -java-home /usr/lib/jvm/graalvm-ce-19 -no-colors ++2.11.12! clean 'bench/jmh:run LinkedListBenchmark'
-...
-[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
-[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
-[info] experiments, perform baseline and negative tests that provide experimental control, make sure
-[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
-[info] Do not assume the numbers tell you what you want them to tell.
-[info] Benchmark                                (size)   Mode  Cnt          Score         Error  Units
-[info] LinkedListBenchmark.javaListOfBooleans        1  thrpt    5  136586394.396 ±  631996.755  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans       10  thrpt    5   27967059.830 ±  165596.117  ops/s
-[info] LinkedListBenchmark.javaListOfBooleans      100  thrpt    5    3139565.454 ±    6639.934  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans       1  thrpt    5  232773825.074 ± 1095799.042  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans      10  thrpt    5   30824629.685 ±   61961.937  ops/s
-[info] LinkedListBenchmark.scalaListOfBooleans     100  thrpt    5    3188630.918 ±   15823.874  ops/s
-```
- 
